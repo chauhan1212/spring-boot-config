@@ -8,20 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GreetingController {
-	
+
 	@Value("${my.greeting}")
 	private String greetingMessage;
-	
+
 	@Value("${app.description}")
 	private String description;
-	
+
 	@GetMapping("/greeting")
-	public String greeting() {	
+	public String greeting() {
 		return greetingMessage;
 	}
-	
-	
-	@RequestMapping(method = {RequestMethod.GET}, path = "desc")
+
+	@GetMapping("/desc")
 	public String desc() {
 		return description;
 	}
