@@ -1,9 +1,11 @@
 package com.vijay.springbootconfig;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,8 +22,56 @@ public class GreetingController {
 		return greetingMessage;
 	}
 
+	@Value("${java.home}")
+	private String javaHome;
+
 	@GetMapping("/desc")
 	public String desc() {
 		return description;
+	}
+
+	@GetMapping("/home")
+	public String home() {
+		return javaHome;
+	}
+
+	@Value("some static message")
+	private String staticMessage;
+
+	@GetMapping("/staticmessage")
+	public String staticMessage() {
+		return staticMessage;
+	}
+
+	@Value("${my.defaultvalue: default value}")
+	private String defaultValue;
+
+	@GetMapping("/defaultvalue")
+	public String defaultValue() {
+		return defaultValue;
+	}
+	
+	@Value("${my.list.values}")
+	private List<String> listValues;
+	
+	@GetMapping("/listvalues")
+	public List<String> listvalue() {
+		return listValues;
+	}
+	
+	@Value("${my.set.values}")
+	private Set<String> setValues;
+	
+	@GetMapping("/setvalues")
+	public Set<String> setvalue() {
+		return setValues;
+	}
+	
+	@Value("#{${dbvalues}}")
+	private Map<String,String> mapValues;
+	
+	@GetMapping("mapvalues")
+	public Map<String,String> mapValues() {
+		return mapValues;
 	}
 }
