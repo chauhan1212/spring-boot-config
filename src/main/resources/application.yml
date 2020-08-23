@@ -1,0 +1,11 @@
+my.greeting: Hello World
+app.name: My App
+app.description: Welcome to ${app.name}
+java.home: java home from application properties
+my.list.values: one,two,three,one
+my.set.values: one,two,three,one
+dbvalues: "{connection:'http:google.com', username:'foo', password:'pass'}"
+db.connection: database connection
+db.host: 127.0.0.1
+db.port: 8088
+management.endpoints.web.exposure.include: "*"

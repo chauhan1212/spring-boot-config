@@ -6,8 +6,11 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.vijay.springbootconfig.profiles.SomeService;
 
 @RestController
 public class GreetingController {
@@ -83,5 +86,21 @@ public class GreetingController {
 	@GetMapping("/dbsettings")
 	public String getDbSettings() {
 		return dbSettings.getConnection()+ dbSettings.getHost()+" "+dbSettings.getPort();
+	}
+	
+	@Autowired
+	SomeService ss;
+	
+	@GetMapping("/profileinfo")
+	public String getProfileInfo() {
+		return ss.toString();
+	}
+	
+	@Autowired
+	Environment env;
+	
+	@GetMapping("/envdetails")
+	public String getEnvDetails() {
+		return env.toString();
 	}
 }
