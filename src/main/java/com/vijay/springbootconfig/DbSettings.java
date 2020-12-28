@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties("db")
 public class DbSettings {
+	/*
+	 * You must have to define setting methods because Spring uses setter injection
+	 */
 	private String connection;
 	private String host;
 	private int port;
@@ -28,5 +31,11 @@ public class DbSettings {
 	public void setPort(int port) {
 		this.port = port;
 	}
+	@Override
+	public String toString() {
+		return "DbSettings [connection=" + connection + ", host=" + host + ", port=" + port + "]";
+	}
+	
+	
 	
 }
